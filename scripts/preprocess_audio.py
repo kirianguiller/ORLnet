@@ -3,11 +3,12 @@ import glob
 import os
 import pandas as pd
 
-N_TO_PROCESS = 30
+N_TO_PROCESS = 17000
 path_project_data = '../data/'
 path_source_data = "/home/wran/corpus/mozilla_voices/"
-languages = ['ru', 'nl', 'de']
-languages = ['nl']
+# languages = ['ru', 'nl', 'de']
+# languages = ['nl']
+languages = ['ru']
 
 for lang in languages:
     path_dest_lang = os.path.join(path_project_data, lang)
@@ -34,4 +35,10 @@ for lang in languages:
         sound.export(path_dest_wav, format='wav')
         with open(path_dest_txt, 'w', encoding='utf-8') as f:
             f.write(row.sentence)
+
+        if index % 10 == 0:
+            print(index)
+
+        if index > N_TO_PROCESS:
+            break
 
