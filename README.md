@@ -1,5 +1,5 @@
 # ORLnet (Oral Recognition Language network)
-Cours Réseau de Neurones pour l'oral, Paris 3 (dispensé par M. Gendrot et M. Audibert)
+Cours Réseau de Neurones pour l'oral, Paris 3 (dispensé par M. Gendrot et M. Audibert)  
 Groupe Alexandre, Ugur et Kirian
 
 ORLnet est un réseau de neurones convolutif de type VGGnet.
