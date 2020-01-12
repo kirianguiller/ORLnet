@@ -137,11 +137,6 @@ def train(model,
 
                     # Forward pass
                     output = model(data)
-                    # print('OUTPUT', output)
-                    # print('OUTPUT shape', output.shape)
-                    # print('TARGET', target)
-                    # print('TARGET shape', target.shape)
-
 
                     # Validation loss
                     loss = criterion(output, target)
@@ -150,9 +145,7 @@ def train(model,
 
                     # Calculate validation accuracy
                     _, pred = torch.max(output, dim=1)
-                    # print('PRED', pred)
                     correct_tensor = pred.eq(target.data.view_as(pred))
-                    # print('CORRECT_TENSOR', correct_tensor)
 
                     accuracy = torch.mean(
                         correct_tensor.type(torch.FloatTensor))
@@ -167,11 +160,6 @@ def train(model,
 
                     # Forward pass
                     output = model(data)
-                    # print('OUTPUT', output)
-                    # print('OUTPUT shape', output.shape)
-                    # print('TARGET', target)
-                    # print('TARGET shape', target.shape)
-
 
                     # Validation loss
                     loss = criterion(output, target)
@@ -180,9 +168,7 @@ def train(model,
 
                     # Calculate validation accuracy
                     _, pred = torch.max(output, dim=1)
-                    # print('PRED', pred)
                     correct_tensor = pred.eq(target.data.view_as(pred))
-                    # print('CORRECT_TENSOR', correct_tensor)
 
                     accuracy = torch.mean(
                         correct_tensor.type(torch.FloatTensor))

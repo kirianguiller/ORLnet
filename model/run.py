@@ -1,6 +1,6 @@
 from train_model_utils import train
 from load_data_utils import data
-import smallnet
+import ORLnet
 
 import torch
 from torch import optim, cuda
@@ -10,18 +10,9 @@ from torch.utils.data import DataLoader
 # Useful for examining network
 from torchsummary import summary
 
-# 1 : dropout > activation > BN
-# 2 : activation > DO > BN
-# 3 : activation > BN > DO
 
-# DO_BN_acti
-# BN_DO_acti
-# totry : - activation > DO > BN
-#         - activation > BN > DO
-# next : linear 10 but last layer BN>DO
-
-path_save = "/scratch/kgerdes/NN_project/saved_models/"
-save_file_name = 'linear_10_final.pt'
+path_save = "/save/"
+save_file_name = 'name_model.pt'
 checkpoint_path = save_file_name.replace('pt', 'pth')
 
 print('-------- NAME ---------\n{}\n'.format(save_file_name))
@@ -55,22 +46,16 @@ else :
     multi_gpu = None
 
 
-net = smallnet.Net()
-
-## net = net.apply(init_weights)
-# net = net.apply(weights_init)
+net = ORLnet.Net()
 net.weight_init()
+
 criterion = nn.NLLLoss()
 optimizer = optim.Adam(net.parameters())
-# optimizer = optim.SGD(net.parameters(),lr=0.001, momentum=0.9)
 
-# net.weight_init()
 if train_on_gpu:
     net.to(device)
 
 summary(net, input_size=(3,224,224))
-
-# net.load_state_dict(torch.load(path_save + save_file_name.replace('3', '2')))
 
 model, history = train(
     net,
